@@ -29,14 +29,16 @@
                     />
         </RelativePanel>
         <SplitView Grid.Row="1" Name="MySplitView"
-                   DisplayMode="CompactOverlay"
+                   DisplayMode="CompactInline"
                    CompactPaneLength="45"
                    OpenPaneLength="200">
             <SplitView.Pane>
-                <ListView Name="MenuItemsListView" IsItemClickEnabled="True"
+                <!--<ListView Name="MenuItemsListView" IsItemClickEnabled="True"
                           ItemsSource="{x:Bind menuItems}"
-                          ItemClick="MenuItemsListView_ItemClick" >
-                    <ListView.ItemTemplate>
+                          ItemClick="MenuItemsListView_ItemClick" >-->
+                <ListView x:Name="MenuItemsListView">
+                    
+                    <!--<ListView.ItemTemplate>
                         <DataTemplate x:DataType="data:MenuItem" >
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{x:Bind IconFile}"
@@ -51,11 +53,40 @@
                                     VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </ListView.ItemTemplate>-->
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="&#xE90B;"
+                            Name="AllSongsMenu"
+                            FontFamily="Segoe MDL2 Assets"
+                            Click="AllSongsMenu_Click"/>
+                        <TextBlock Text="My Songs"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="&#xEA55;"
+                        Name="GenresMenu"
+                        FontFamily="Segoe MDL2 Assets"
+                        Click="GenresMenu_Click"/>
+                        <TextBlock Text="Genres"
+                                   HorizontalAlignment="Center"
+                                   />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="&#xEA55;"
+                        Name="PlaylistMenu"
+                        FontFamily="Segoe MDL2 Assets"
+                        Click="PlaylistMenu_Click"/>
+                        <TextBlock Text="Playlist"
+                                   HorizontalAlignment="Center"
+                                   />
+                    </StackPanel>
+                    
                 </ListView>
             </SplitView.Pane>
             <SplitView.Content>
-                <Grid Margin="20,20,0,0">
+                <Frame x:Name="contentFrame" />
+                
+                <!--<Grid Margin="20,20,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*"/>
@@ -65,20 +96,24 @@
                     
                     <TextBlock Name="CategoryTextBlock" Text="All Sounds" FontSize="24"/>
                     
-                    <GridView Grid.Row="1"
+                    <ListView Grid.Row="1"
                               Name="SoundGridView"
                               SelectionMode="None"
                               IsItemClickEnabled="True"
                               ItemsSource="{x:Bind sounds}"
                               ItemClick="SoundGridView_ItemClick">
-                        <GridView.ItemTemplate>
+                        <ListView.ItemTemplate>
                             <DataTemplate x:DataType="data:Sound">
-                                <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Name="MyImage" Height="80" Width="60" Source="{x:Bind ImageFile}"/>
+                                    <TextBlock Text="hello" Width="100" VerticalAlignment="Center">hehe</TextBlock>
+                                </StackPanel>
                             </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-                </Grid>
+                </Grid>-->
+                
             </SplitView.Content>
 
         </SplitView>
